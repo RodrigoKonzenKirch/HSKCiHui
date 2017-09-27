@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item
+            android:id="@+id/action_choose_hsk"
+            android:title="@string/choose_hsk"
+            app:showAsAction="always"/>
+
+        <item
+            android:id="@+id/action_choose_difficulty"
+            android:title="@string/choose_difficulty"
+            app:showAsAction="always"/>
+
+        <item
+            android:id="@+id/action_choose_type"
+            android:title="@string/choose_type"
+            app:showAsAction="always"/>
+
+        <item android:id="@+id/action_settings"
+            android:title="@string/action_settings"
+            app:showAsAction="never"/>
+</menu>

@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">HSKCiHui</string>
+    <string name="app_name">词汇 HSK</string>
+    <string name="choose_hsk">HSK</string>
+    <string name="action_settings">Settings</string>
+    <string name="choose_difficulty">Difficulty</string>
+    <string name="choose_type">Type</string>
+    <string name="textViewHsk">HSK</string>
+    <string name="textViewDifficulty">Difficulty</string>
+    <string name="radioButtonAll">All</string>
+    <string name="hsk1">1级</string>
+    <string name="hsk2">2级</string>
+    <string name="hsk3">3级</string>
+    <string name="hsk4">4级</string>
+    <string name="hsk5">5级</string>
+    <string name="hsk6">6级</string>
+    <string name="radioButtonDifficulty0">Never Seen Before</string>
+    <string name="radioButtonDifficulty1">Hard</string>
+    <string name="radioButtonDifficulty2">Medium</string>
+    <string name="radioButtonDifficulty3">Easy</string>
+    <string name="radioButtonDifficultySpecial">Special</string>
+    <string name="buttonGenerateWordList">Let\'s do this!</string>
+    <string name="no_data">No data</string>
+
+
 </resources>
