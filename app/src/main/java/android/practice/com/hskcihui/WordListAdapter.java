@@ -1,6 +1,7 @@
 package android.practice.com.hskcihui;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,31 @@ public class WordListAdapter extends ArrayAdapter{
         }
 
         Words individualWord = word.get(position);
+
+        int color;
+        switch (individualWord.getLevel()){
+            case "0":
+                color = Color.WHITE;
+                break;
+            case "1":
+                color = Color.RED;
+                break;
+            case "2":
+                color = Color.YELLOW;
+                break;
+            case "3":
+                color = Color.GREEN;
+                break;
+            case "4":
+                color = Color.CYAN;
+                break;
+            default:
+                color = Color.WHITE;
+                break;
+        }
+        holder.wordHsk.setTextColor(color);
+        holder.wordSimplified.setTextColor(color);
+        holder.wordTraditional.setTextColor(color);
         holder.wordHsk.setText(individualWord.getHsk());
         holder.wordSimplified.setText(individualWord.getSimplified());
         holder.wordTraditional.setText(individualWord.getTraditional());

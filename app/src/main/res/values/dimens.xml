@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="listViewTextSize">24sp</dimen>
+    <dimen name="wordDetailHanzi">32sp</dimen>
+    <dimen name="wordDetailEnglish">22sp</dimen>
+    <dimen name="wordDetailPinyin">18sp</dimen>
+    <dimen name="wordDetailButtonSize">64dp</dimen>
 </resources>

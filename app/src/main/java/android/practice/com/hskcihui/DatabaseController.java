@@ -1,5 +1,6 @@
 package android.practice.com.hskcihui;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -54,14 +55,20 @@ class DatabaseController {
 
         if(cursor.getCount()<=0){
             String noDataWarning = "No data found";
-            words.add(new Words(noDataWarning,noDataWarning,noDataWarning));
+            words.add(new Words(noDataWarning,noDataWarning,noDataWarning,noDataWarning,noDataWarning,
+                    noDataWarning,noDataWarning,noDataWarning,noDataWarning));
         }else{
-            cursor.moveToFirst();
 
             while (cursor.moveToNext()) {
-                words.add(new Words(cursor.getString(cursor.getColumnIndex(CreateDatabase.HSK)),
+                words.add(new Words(cursor.getString(cursor.getColumnIndex(CreateDatabase.ID)),
+                        cursor.getString(cursor.getColumnIndex(CreateDatabase.HSK)),
                         cursor.getString(cursor.getColumnIndex(CreateDatabase.SIMPLIFIED)),
-                        cursor.getString(cursor.getColumnIndex(CreateDatabase.TRADITIONAL))));
+                        cursor.getString(cursor.getColumnIndex(CreateDatabase.TRADITIONAL)),
+                        cursor.getString(cursor.getColumnIndex(CreateDatabase.PINYIN)),
+                        cursor.getString(cursor.getColumnIndex(CreateDatabase.ENGLISH)),
+                        cursor.getString(cursor.getColumnIndex(CreateDatabase.TYPE)),
+                        cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)),
+                        cursor.getString(cursor.getColumnIndex(CreateDatabase.INFO))));
             }
         }
 
@@ -69,4 +76,28 @@ class DatabaseController {
         cursor.close();
         return words;
     }
+
+    public void setLevelById(String id, String level){
+        SQLiteDatabase db;
+        db = database.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(CreateDatabase.LEVEL, level);
+
+        String selection = CreateDatabase.ID + " LIKE ?";
+        String[] selectionArgs = {id};
+
+        db.update(database.TABLE, values, selection, selectionArgs);
+
+        db.close();
+
+    }
+
+    public int[][] getStatistics(){
+        int[][] stats = new int[5][6];
+
+
+        return stats;
+    }
+
 }

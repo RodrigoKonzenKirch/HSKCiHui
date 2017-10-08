@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mToolbar);
-
+    //TODO Show Statistics on main activity
     }
 
     public void generateListOfWords(View view){
