@@ -25,6 +25,7 @@
     <string name="radioButtonDifficultySpecial">Special</string>
     <string name="buttonGenerateWordList">Let\'s do this!</string>
     <string name="no_data">No data</string>
+    <string name="buttonStats">Stats</string>
 
 
 </resources>

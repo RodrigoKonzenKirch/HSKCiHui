@@ -16,6 +16,13 @@
         android:elevation="4dp"
         tools:ignore="UnusedAttribute" />
 
+    <Button
+        android:id="@+id/buttonStatistics"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showStats"
+        android:text="@string/buttonStats" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -133,35 +140,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/radioButtonDifficulty0" />
+                    android:text="@string/radioButtonDifficulty0"
+                    android:textColor="@color/white"/>
 
                 <RadioButton
                     android:id="@+id/radioButtonDifficulty1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/radioButtonDifficulty1" />
+                    android:text="@string/radioButtonDifficulty1"
+                    android:textColor="@color/red"/>
 
                 <RadioButton
                     android:id="@+id/radioButtonDifficulty2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/radioButtonDifficulty2" />
+                    android:text="@string/radioButtonDifficulty2"
+                    android:textColor="@color/yellow"/>
 
                 <RadioButton
                     android:id="@+id/radioButtonDifficulty3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/radioButtonDifficulty3" />
+                    android:text="@string/radioButtonDifficulty3"
+                    android:textColor="@color/green"/>
 
                 <RadioButton
                     android:id="@+id/radioButtonDifficulty4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/radioButtonDifficultySpecial" />
+                    android:text="@string/radioButtonDifficultySpecial"
+                    android:textColor="@color/cyan"/>
 
             </RadioGroup>
         </LinearLayout>
@@ -169,7 +181,7 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="generateListOfWords"

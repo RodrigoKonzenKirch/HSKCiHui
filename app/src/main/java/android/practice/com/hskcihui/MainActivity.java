@@ -9,7 +9,6 @@ import android.widget.RadioGroup;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mToolbar);
-    //TODO Show Statistics on main activity
     }
 
     public void generateListOfWords(View view){
@@ -40,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         Intent mIntent = new Intent(this, WordListActivity.class);
         mIntent.putExtra("hskLevel", radioButtonPositionHskLevel);
         mIntent.putExtra("difficultyLevel", radioButtonPositionDifficultyLevel);
+        startActivity(mIntent);
+    }
+
+    public void showStats(View view) {
+        Intent mIntent = new Intent(this, Stats.class);
         startActivity(mIntent);
     }
 }

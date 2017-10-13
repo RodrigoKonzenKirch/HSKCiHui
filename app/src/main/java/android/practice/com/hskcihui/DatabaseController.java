@@ -90,13 +90,126 @@ class DatabaseController {
         db.update(database.TABLE, values, selection, selectionArgs);
 
         db.close();
-
     }
 
-    public int[][] getStatistics(){
+    public int[][] getStats(){
         int[][] stats = new int[5][6];
+        SQLiteDatabase db;
+        db = database.getReadableDatabase();
 
+        String[] columns = {CreateDatabase.HSK,CreateDatabase.LEVEL};
 
+        Cursor cursor = db.query(database.TABLE, columns, null, null, null, null, null);
+
+        if (cursor.getCount()>0){
+            while (cursor.moveToNext()) {
+                if (cursor.getString(cursor.getColumnIndex(CreateDatabase.HSK)).equals("1")){
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("0")){
+                        stats[0][0]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("1")){
+                        stats[1][0]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("2")){
+                        stats[2][0]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("3")){
+                        stats[3][0]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("4")){
+                        stats[4][0]++;
+                    }
+                }
+                if (cursor.getString(cursor.getColumnIndex(CreateDatabase.HSK)).equals("2")){
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("0")){
+                        stats[0][1]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("1")){
+                        stats[1][1]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("2")){
+                        stats[2][1]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("3")){
+                        stats[3][1]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("4")){
+                        stats[4][1]++;
+                    }
+
+                }
+                if (cursor.getString(cursor.getColumnIndex(CreateDatabase.HSK)).equals("3")){
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("0")){
+                        stats[0][2]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("1")){
+                        stats[1][2]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("2")){
+                        stats[2][2]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("3")){
+                        stats[3][2]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("4")){
+                        stats[4][2]++;
+                    }
+                }
+                if (cursor.getString(cursor.getColumnIndex(CreateDatabase.HSK)).equals("4")){
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("0")){
+                        stats[0][3]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("1")){
+                        stats[1][3]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("2")){
+                        stats[2][3]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("3")){
+                        stats[3][3]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("4")){
+                        stats[4][3]++;
+                    }
+                }
+                if (cursor.getString(cursor.getColumnIndex(CreateDatabase.HSK)).equals("5")){
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("0")){
+                        stats[0][4]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("1")){
+                        stats[1][4]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("2")){
+                        stats[2][4]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("3")){
+                        stats[3][4]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("4")){
+                        stats[4][4]++;
+                    }
+                }
+                if (cursor.getString(cursor.getColumnIndex(CreateDatabase.HSK)).equals("6")){
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("0")){
+                        stats[0][5]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("1")){
+                        stats[1][5]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("2")){
+                        stats[2][5]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("3")){
+                        stats[3][5]++;
+                    }
+                    if (cursor.getString(cursor.getColumnIndex(CreateDatabase.LEVEL)).equals("4")){
+                        stats[4][5]++;
+                    }
+                }
+            }
+        }
+        db.close();
+        cursor.close();
         return stats;
     }
 
