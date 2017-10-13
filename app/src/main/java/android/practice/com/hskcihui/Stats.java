@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayout;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.widget.TextView;
 
@@ -13,6 +14,12 @@ public class Stats extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getResources().getString( R.string.app_name)+" - "+
+                getResources().getString(R.string.statsActivityName));
 
         DatabaseController dbController;
         dbController = new DatabaseController(getBaseContext());

@@ -1,9 +1,12 @@
 package android.practice.com.hskcihui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -25,6 +28,12 @@ public class WordDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_detail);
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getResources().getString( R.string.app_name)+" - "+
+                getResources().getString(R.string.wordDetailActivityName));
 
         dbController = new DatabaseController(getBaseContext());
 
@@ -53,6 +62,12 @@ public class WordDetail extends AppCompatActivity {
         }
 
         updateInterface();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
     }
 
     private void updateInterface(){

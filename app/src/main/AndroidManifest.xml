@@ -16,9 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WordListActivity" />
-        <activity android:name=".WordDetail" />
-        <activity android:name=".Stats"></activity>
+        <activity
+            android:name=".WordListActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".WordDetail"
+            android:parentActivityName=".WordListActivity"/>
+        <activity
+            android:name=".Stats"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
