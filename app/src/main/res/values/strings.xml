@@ -3,6 +3,7 @@
     <string name="statsActivityName">Stats</string>
     <string name="wordListActivityName">Word List</string>
     <string name="wordDetailActivityName">Details</string>
+    <string name="requestUserInputActivityName">Input data</string>
     <string name="choose_hsk">HSK</string>
     <string name="action_settings">Settings</string>
     <string name="choose_difficulty">Difficulty</string>
