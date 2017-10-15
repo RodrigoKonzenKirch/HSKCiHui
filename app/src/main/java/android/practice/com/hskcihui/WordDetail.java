@@ -1,13 +1,19 @@
 package android.practice.com.hskcihui;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class WordDetail extends AppCompatActivity {
@@ -23,6 +29,8 @@ public class WordDetail extends AppCompatActivity {
     private String type;
     private String info;
     private final String[] levelContent= {"New Word", "Hard", "Not so hard", "Easy", "Special"};
+    final Context context = this;
+    public static final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +47,7 @@ public class WordDetail extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras == null){
-            String noData = "NO DATA";
+            String noData = getResources().getString(R.string.no_data);
             id = noData;
             simplified = noData;
             traditional = noData;
@@ -61,7 +69,31 @@ public class WordDetail extends AppCompatActivity {
             info = extras.getString("INFO");
         }
 
+        final TextView textViewEnglish = (TextView) findViewById(R.id.textViewWordEnglish);
+        textViewEnglish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent mIntent = new Intent(context, RequestUserInputData.class);
+                mIntent.putExtra("currentValue", textViewEnglish.getText().toString());
+                startActivityForResult(mIntent, REQUEST_CODE);
+            }
+        });
+
         updateInterface();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE){
+            if (resultCode == Activity.RESULT_OK){
+                String result = data.getStringExtra("englishUpdated");
+                dbController.setEnglishValueById(result, id);
+                TextView textViewEnglish = (TextView) findViewById(R.id.textViewWordEnglish);
+                textViewEnglish.setText(result);
+            }
+        }
     }
 
     @Override

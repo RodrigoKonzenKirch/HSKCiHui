@@ -213,4 +213,17 @@ class DatabaseController {
         return stats;
     }
 
+    public void setEnglishValueById(String newValue, String id){
+        SQLiteDatabase db;
+        db = database.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(CreateDatabase.ENGLISH, newValue);
+
+        String selection = CreateDatabase.ID + " LIKE ?";
+        String[] selectionArgs = {id};
+
+        db.update(database.TABLE,values, selection, selectionArgs);
+        db.close();
+    }
 }
