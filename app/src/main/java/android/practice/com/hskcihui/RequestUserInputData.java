@@ -19,12 +19,12 @@ public class RequestUserInputData extends AppCompatActivity {
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getResources().getString( R.string.app_name)+" - "+
                 getResources().getString(R.string.requestUserInputActivityName));
 
         Intent intent = getIntent();
         String currentValue = intent.getStringExtra("currentValue");
+
 
         editTextUserInput = (EditText) findViewById(R.id.editTextUserInput);
         editTextUserInput.setText(currentValue);
@@ -33,12 +33,12 @@ public class RequestUserInputData extends AppCompatActivity {
     public void sendUserInputData(View view) {
         Intent intentReturnValue = new Intent();
         String returnValue;
-        if (editTextUserInput.getText().equals("")){
+        if (editTextUserInput.getText().toString().equals("")){
             returnValue = getResources().getString(R.string.empty);
         }else {
             returnValue = editTextUserInput.getText().toString();
         }
-        intentReturnValue.putExtra("englishUpdated", returnValue);
+        intentReturnValue.putExtra("updatedValue", returnValue);
         setResult(Activity.RESULT_OK, intentReturnValue);
         finish();
     }

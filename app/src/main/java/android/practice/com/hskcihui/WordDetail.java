@@ -25,7 +25,8 @@ public class WordDetail extends AppCompatActivity {
     private String info;
     private final String[] levelContent= {"New Word", "Hard", "Not so hard", "Easy", "Special"};
     final Context context = this;
-    public static final int REQUEST_CODE = 1;
+    public static final int REQUEST_CODE_ENGLISH = 1;
+    public static final int REQUEST_CODE_INFO = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,27 +42,29 @@ public class WordDetail extends AppCompatActivity {
         dbController = new DatabaseController(getBaseContext());
 
         Bundle extras = getIntent().getExtras();
-        if (extras == null){
-            String noData = getResources().getString(R.string.no_data);
-            id = noData;
-            simplified = noData;
-            traditional = noData;
-            hsk = noData;
-            pinyin = noData;
-            english = noData;
-            type = noData;
-            level = noData;
-            info = noData;
-        }else{
-            id = extras.getString("ID");
-            simplified = extras.getString("SIMPLIFIED");
-            traditional = extras.getString("TRADITIONAL");
-            hsk = "HSK "+extras.getString("HSK");
-            pinyin = extras.getString("PINYIN");
-            english = extras.getString("ENGLISH");
-            type = extras.getString("TYPE");
-            level = extras.getString("LEVEL");
-            info = extras.getString("INFO");
+        if (id == null) {
+            if (extras == null) {
+                String noData = getResources().getString(R.string.no_data);
+                id = "0";
+                simplified = noData;
+                traditional = noData;
+                hsk = noData;
+                pinyin = noData;
+                english = noData;
+                type = noData;
+                level = "0";
+                info = getResources().getString(R.string.empty);
+            } else {
+                id = extras.getString("ID");
+                simplified = extras.getString("SIMPLIFIED");
+                traditional = extras.getString("TRADITIONAL");
+                hsk = "HSK " + extras.getString("HSK");
+                pinyin = extras.getString("PINYIN");
+                english = extras.getString("ENGLISH");
+                type = extras.getString("TYPE");
+                level = extras.getString("LEVEL");
+                info = extras.getString("INFO");
+            }
         }
 
         final TextView textViewEnglish = (TextView) findViewById(R.id.textViewWordEnglish);
@@ -71,7 +74,18 @@ public class WordDetail extends AppCompatActivity {
 
                 Intent mIntent = new Intent(context, RequestUserInputData.class);
                 mIntent.putExtra("currentValue", textViewEnglish.getText().toString());
-                startActivityForResult(mIntent, REQUEST_CODE);
+                startActivityForResult(mIntent, REQUEST_CODE_ENGLISH);
+            }
+        });
+
+        final TextView textViewInfo = (TextView) findViewById(R.id.textViewWordInfo);
+        textViewInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+
+                Intent mIntent = new Intent(context, RequestUserInputData.class);
+                mIntent.putExtra("currentValue", textViewInfo.getText().toString());
+                startActivityForResult(mIntent, REQUEST_CODE_INFO);
             }
         });
 
@@ -81,12 +95,19 @@ public class WordDetail extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE){
+        if (requestCode == REQUEST_CODE_ENGLISH){
             if (resultCode == Activity.RESULT_OK){
-                String result = data.getStringExtra("englishUpdated");
+                String result = data.getStringExtra("updatedValue");
                 dbController.setEnglishValueById(result, id);
                 TextView textViewEnglish = (TextView) findViewById(R.id.textViewWordEnglish);
                 textViewEnglish.setText(result);
+            }
+        }else if(requestCode == REQUEST_CODE_INFO){
+            if (resultCode == Activity.RESULT_OK){
+                String result = data.getStringExtra("updatedValue");
+                dbController.setInfoById(result, id);
+                TextView textViewInfo = (TextView) findViewById(R.id.textViewWordInfo);
+                textViewInfo.setText(result);
             }
         }
     }
@@ -127,6 +148,7 @@ public class WordDetail extends AppCompatActivity {
         TextView textViewPinyin = (TextView) findViewById(R.id.textViewWordPinyin);
         TextView textViewEnglish = (TextView) findViewById(R.id.textViewWordEnglish);
         TextView textViewLevel = (TextView) findViewById(R.id.textViewWordLevel);
+        TextView textViewInfo = (TextView) findViewById(R.id.textViewWordInfo);
 
         textViewSimplified.setTextColor(color);
         textViewTraditional.setTextColor(color);
@@ -134,6 +156,7 @@ public class WordDetail extends AppCompatActivity {
         textViewPinyin.setTextColor(color);
         textViewEnglish.setTextColor(color);
         textViewLevel.setTextColor(color);
+        textViewInfo.setTextColor(color);
 
         String typePinyin = "["+type+"]\n"+pinyin;
         textViewSimplified.setText(simplified);
@@ -144,6 +167,7 @@ public class WordDetail extends AppCompatActivity {
         String textViewLevelContent = "LEVEL "+level+
                 ": "+levelContent[Integer.parseInt(level)];
         textViewLevel.setText(textViewLevelContent);
+        textViewInfo.setText(info);
     }
 
     public void setLevel(View view) {

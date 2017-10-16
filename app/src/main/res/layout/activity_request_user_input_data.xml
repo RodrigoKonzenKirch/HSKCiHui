@@ -6,7 +6,6 @@
     android:id="@+id/layoutRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar android:id="@+id/my_toolbar"
@@ -22,12 +21,14 @@
         android:id="@+id/textViewUserInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/userInputEditing" />
 
     <EditText
         android:id="@+id/editTextUserInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/no_data" />
@@ -36,6 +37,7 @@
         android:id="@+id/buttonUserInputDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/buttonDone"
         android:onClick="sendUserInputData"/>
 </LinearLayout>

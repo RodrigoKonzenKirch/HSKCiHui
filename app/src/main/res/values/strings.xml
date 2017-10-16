@@ -30,7 +30,7 @@
     <string name="buttonGenerateWordList">Let\'s do this!</string>
     <string name="no_data">No data</string>
     <string name="buttonStats">Stats</string>
-    <string name="userInputEditing">Editing...</string>
+    <string name="userInputEditing">Edit data below. Hit DONE to save to database</string>
     <string name="empty">[Empty]</string>
     <string name="buttonDone">Done</string>
 

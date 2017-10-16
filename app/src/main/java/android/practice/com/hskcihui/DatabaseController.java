@@ -223,7 +223,21 @@ class DatabaseController {
         String selection = CreateDatabase.ID + " LIKE ?";
         String[] selectionArgs = {id};
 
-        db.update(database.TABLE,values, selection, selectionArgs);
+        db.update(database.TABLE, values, selection, selectionArgs);
+        db.close();
+    }
+
+    public void setInfoById(String newInfo, String id){
+        SQLiteDatabase db;
+        db = database.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(CreateDatabase.INFO, newInfo);
+
+        String selection = CreateDatabase.ID + " LIKE ?";
+        String[] selectionArgs = {id};
+
+        db.update(database.TABLE, values, selection, selectionArgs);
         db.close();
     }
 }

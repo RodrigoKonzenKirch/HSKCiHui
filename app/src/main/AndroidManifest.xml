@@ -26,8 +26,7 @@
             android:name=".Stats"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".RequestUserInputData"
-            android:parentActivityName=".WordDetail"/>
+            android:name=".RequestUserInputData"/>
     </application>
 
 </manifest>
