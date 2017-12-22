@@ -5,4 +5,5 @@
     <dimen name="wordDetailEnglish">22sp</dimen>
     <dimen name="wordDetailPinyin">18sp</dimen>
     <dimen name="wordDetailButtonSize">64dp</dimen>
+    <dimen name="padding">8dp</dimen>
 </resources>
